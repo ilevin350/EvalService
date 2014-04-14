@@ -1,0 +1,5 @@
+C:\Users\ilevin\Documents\github\EvalServiceLibrary\Client\bin\Debug\Client.exe.config
+C:\Users\ilevin\Documents\github\EvalServiceLibrary\Client\bin\Debug\Client.exe
+C:\Users\ilevin\Documents\github\EvalServiceLibrary\Client\bin\Debug\Client.pdb
+C:\Users\ilevin\Documents\github\EvalServiceLibrary\Client\obj\Debug\Client.exe
+C:\Users\ilevin\Documents\github\EvalServiceLibrary\Client\obj\Debug\Client.pdb
