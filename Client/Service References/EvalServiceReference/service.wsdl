@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="EvalService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
-  <wsp:Policy wsu:Id="wsHttp_policy">
+  <wsp:Policy wsu:Id="ws_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SymmetricBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -96,7 +96,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="wsHttp_SubmitEval_Input_policy">
+  <wsp:Policy wsu:Id="ws_SubmitEval_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -115,7 +115,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="wsHttp_SubmitEval_output_policy">
+  <wsp:Policy wsu:Id="ws_SubmitEval_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -134,7 +134,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="wsHttp_GetEvals_Input_policy">
+  <wsp:Policy wsu:Id="ws_GetEvals_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -153,7 +153,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="wsHttp_GetEvals_output_policy">
+  <wsp:Policy wsu:Id="ws_GetEvals_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -172,7 +172,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="wsHttp_RemoveEval_Input_policy">
+  <wsp:Policy wsu:Id="ws_RemoveEval_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -191,7 +191,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="wsHttp_RemoveEval_output_policy">
+  <wsp:Policy wsu:Id="ws_RemoveEval_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -207,6 +207,64 @@
         <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
           <sp:Body />
         </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="tcp_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="pipe_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
@@ -249,48 +307,161 @@
       <wsdl:output wsaw:Action="http://tempuri.org/IEvalService/RemoveEvalResponse" message="tns:IEvalService_RemoveEval_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:binding name="wsHttp" type="tns:IEvalService">
-    <wsp:PolicyReference URI="#wsHttp_policy" />
+  <wsdl:binding name="ws" type="tns:IEvalService">
+    <wsp:PolicyReference URI="#ws_policy" />
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="SubmitEval">
       <soap12:operation soapAction="http://tempuri.org/IEvalService/SubmitEval" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#wsHttp_SubmitEval_Input_policy" />
+        <wsp:PolicyReference URI="#ws_SubmitEval_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#wsHttp_SubmitEval_output_policy" />
+        <wsp:PolicyReference URI="#ws_SubmitEval_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetEvals">
       <soap12:operation soapAction="http://tempuri.org/IEvalService/GetEvals" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#wsHttp_GetEvals_Input_policy" />
+        <wsp:PolicyReference URI="#ws_GetEvals_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#wsHttp_GetEvals_output_policy" />
+        <wsp:PolicyReference URI="#ws_GetEvals_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="RemoveEval">
       <soap12:operation soapAction="http://tempuri.org/IEvalService/RemoveEval" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#wsHttp_RemoveEval_Input_policy" />
+        <wsp:PolicyReference URI="#ws_RemoveEval_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#wsHttp_RemoveEval_output_policy" />
+        <wsp:PolicyReference URI="#ws_RemoveEval_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="basic" type="tns:IEvalService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SubmitEval">
+      <soap:operation soapAction="http://tempuri.org/IEvalService/SubmitEval" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEvals">
+      <soap:operation soapAction="http://tempuri.org/IEvalService/GetEvals" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveEval">
+      <soap:operation soapAction="http://tempuri.org/IEvalService/RemoveEval" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="tcp" type="tns:IEvalService">
+    <wsp:PolicyReference URI="#tcp_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="SubmitEval">
+      <soap12:operation soapAction="http://tempuri.org/IEvalService/SubmitEval" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEvals">
+      <soap12:operation soapAction="http://tempuri.org/IEvalService/GetEvals" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveEval">
+      <soap12:operation soapAction="http://tempuri.org/IEvalService/RemoveEval" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="pipe" type="tns:IEvalService">
+    <wsp:PolicyReference URI="#pipe_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/named-pipe" />
+    <wsdl:operation name="SubmitEval">
+      <soap12:operation soapAction="http://tempuri.org/IEvalService/SubmitEval" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEvals">
+      <soap12:operation soapAction="http://tempuri.org/IEvalService/GetEvals" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveEval">
+      <soap12:operation soapAction="http://tempuri.org/IEvalService/RemoveEval" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="EvalService">
-    <wsdl:port name="wsHttp" binding="tns:wsHttp">
-      <soap12:address location="http://localhost:8733/Design_Time_Addresses/EvalServiceLibrary/Service1/" />
+    <wsdl:port name="ws" binding="tns:ws">
+      <soap12:address location="http://localhost:8080/evalservice/ws" />
       <wsa10:EndpointReference>
-        <wsa10:Address>http://localhost:8733/Design_Time_Addresses/EvalServiceLibrary/Service1/</wsa10:Address>
+        <wsa10:Address>http://localhost:8080/evalservice/ws</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Dns>localhost</Dns>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="basic" binding="tns:basic">
+      <soap:address location="http://localhost:8080/evalservice/basic" />
+    </wsdl:port>
+    <wsdl:port name="tcp" binding="tns:tcp">
+      <soap12:address location="net.tcp://localhost:8888/evalservice" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8888/evalservice</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Dns>localhost</Dns>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="pipe" binding="tns:pipe">
+      <soap12:address location="net.pipe://localhost/evalservice" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.pipe://localhost/evalservice</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
           <Dns>localhost</Dns>
         </Identity>

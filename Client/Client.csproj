@@ -52,7 +52,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
     <None Include="Service References\EvalServiceReference\Client.EvalServiceReference.Eval.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -66,9 +69,6 @@
     <None Include="Service References\EvalServiceReference\service1.xsd">
       <SubType>Designer</SubType>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\EvalServiceReference\" />

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="1f01204d-7671-4891-b066-1073a34c7224" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="247d95c9-a7b3-4f9c-adff-569dcbc85edf" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,13 +19,13 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/EvalServiceLibrary/Service1/mex" Protocol="mex" SourceId="1" />
+    <MetadataSource Address="http://localhost:8080/evalservice/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="c054085c-1731-40c4-952b-56d83908b732" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/EvalServiceLibrary/Service1/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="d3270dc0-1f5d-42de-96d1-a4d3f6fab349" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/EvalServiceLibrary/Service1/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="601e1566-cb6d-4fae-a043-da57e2d163fd" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/EvalServiceLibrary/Service1/mex" />
-    <MetadataFile FileName="EvalServiceLibrary.xsd" MetadataType="Schema" ID="1505aed5-2564-407f-9690-4aca7603bfce" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/EvalServiceLibrary/Service1/mex" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="23f787f7-8925-41e8-bba7-0c46782f7dca" SourceId="1" SourceUrl="http://localhost:8080/evalservice/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="353e4dcf-32f3-4469-9fd6-fdccf352ee91" SourceId="1" SourceUrl="http://localhost:8080/evalservice/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="6d97bea3-fd00-4721-aac0-ae038fd08f1e" SourceId="1" SourceUrl="http://localhost:8080/evalservice/mex" />
+    <MetadataFile FileName="EvalServiceLibrary.xsd" MetadataType="Schema" ID="2bcb4275-bb15-4951-b879-a74ec1565d45" SourceId="1" SourceUrl="http://localhost:8080/evalservice/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
